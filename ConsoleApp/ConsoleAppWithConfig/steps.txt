@@ -1,0 +1,12 @@
+1. Install nuget serilog
+PM> Install-Package Serilog
+PM> Install-Package Serilog.Sinks.Console (if need to show on console)
+
+2. To write to file, install the sink to file
+Install-Package Serilog.Sinks.File
+
+3. To enable configuration from json
+Install-Package Serilog.Settings.AppSettings
+
+
+

@@ -1,0 +1,6 @@
+﻿add Microsoft.Extensions.Configuration
+add Microsoft.Extensions.Configuration.Json
+add appsettings.json file
+add Serilog.Settings.Configuration
+
+a

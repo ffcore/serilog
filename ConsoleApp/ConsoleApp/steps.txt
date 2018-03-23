@@ -1,0 +1,9 @@
+1. Install nuget serilog
+PM> Install-Package Serilog
+
+2. To write to file, install the sink to file
+Install-Package Serilog.Sinks.File
+
+
+
+
