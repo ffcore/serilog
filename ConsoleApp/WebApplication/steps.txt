@@ -3,3 +3,4 @@ add Microsoft.Extensions.Configuration.Json
 add appsettings.json file
 add Serilog.Settings.Configuration
 add Serilog.Sinks.File
+add StructureMap.WebApi2
