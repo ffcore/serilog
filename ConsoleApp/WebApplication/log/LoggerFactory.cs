@@ -10,17 +10,16 @@ namespace WebApplication.log
 {
     public static class LoggerFactory
     {
-        public static ILogger GetLogger(string appsettingsPath)
+        public static ILogger CreateLogger(string appsettingsPath)
         {
+
             var configuration = new ConfigurationBuilder()
-              .AddJsonFile(Path.Combine(Path.Combine(appsettingsPath, "appsettings.json")))
+              .AddJsonFile(Path.Combine(appsettingsPath, "appsettings.json"))
               .Build();
 
             return new LoggerConfiguration()
               .ReadFrom.Configuration(configuration)
               .CreateLogger();
-
-           
         }
     }
 }

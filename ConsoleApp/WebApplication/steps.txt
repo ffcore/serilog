@@ -4,3 +4,8 @@ add appsettings.json file
 add Serilog.Settings.Configuration
 add Serilog.Sinks.File
 add StructureMap.WebApi2
+
+
+add Microsoft.Owin.Host.SystemWeb
+add Microsoft.AspNet.WebApi.Owin
+

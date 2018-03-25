@@ -1,15 +1,21 @@
 ﻿using Serilog;
+using Serilog.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Owin;
+using System.Web;
 
 namespace WebApplication.Controllers
 {
     public class ValuesController : ApiController
     {
+        const string MessageTemplate =
+             "{ID} - HTTP {RequestMethod} {RequestPath} {Message}";
+
         private ILogger logger { get; set; }
         
         public ValuesController(ILogger logger)
@@ -24,10 +30,19 @@ namespace WebApplication.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        [HttpGet]
+        public IHttpActionResult Get(int id)
         {
-            logger.Debug($"// GET api/values/{id}");
-            return "value";
+            var owinContext = HttpContext.Current.GetOwinContext();
+
+            string traceId = owinContext.Get<string>("TraceID") ?? "N/A";
+
+            logger.Write(LogEventLevel.Debug, MessageTemplate, traceId, Request.Method.Method, Request.RequestUri.PathAndQuery, "Get with value");
+
+            if (id == 2)
+                return InternalServerError(new Exception("bla bla"));
+
+            return Ok("value");
         }
 
         // POST api/values

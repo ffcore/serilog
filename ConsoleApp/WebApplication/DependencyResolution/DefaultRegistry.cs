@@ -32,8 +32,7 @@ namespace WebApplication.DependencyResolution {
                     scan.WithDefaultConventions();
                 });
 
-            
-            For<ILogger>().Use(() =>LoggerFactory.GetLogger(System.Web.HttpRuntime.AppDomainAppPath)).Singleton();
+            For<ILogger>().Use(p => LoggerFactory.CreateLogger(System.Web.HttpRuntime.AppDomainAppPath)).Singleton();
         }
 
         #endregion
